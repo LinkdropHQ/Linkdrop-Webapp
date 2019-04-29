@@ -45,6 +45,33 @@ Works best with [Trust Wallet](http://trustwalletapp.com) on mobile. You can als
 
 This repo contains Front-End code + Smart Contracts. Verification Server's code is located in the separate [repository](https://github.com/Eth2io/eth2-server)
 
+## Branch naming conventions
+
+"master" branch - our stable prod branch. We use it to deploy current stable version of application
+"dev" branch - our staging branch. We use it to deploy current testing version with new features before merging to "master" branch
+
+How to work as an contributor to Linkdrop Monorepo:
+1. When you want to work with an issue your branch naming process should include next steps:
+* find an issue id (can be found in an issue url)
+* go to "dev" branch ("git checkout dev")
+* pull current version of dev branch ("git pull origin dev")
+* create a new branch with template 'dev_{ID_OF_ISSUE}' ("git checkout -b dev_1", if we consider an issue with id "1")
+* write your beautiful code, commit it, and push your branch with changes ("git add ." + "git commit -m 'my new feature added'" + "git push origin dev_1")
+* open new Pull Request (PR), write down description in an appropriate field ("added minor fixes, added readme.md file blah blah"). If you PR includes code related to other issues, you have to mention it also in the description.
+* wait for feedback from Linkdrop team
+
+
+2. If you have already opened a PR, and you want to start working with the new issue:
+* if the new issue isn't somehow related to the previous one (that has an opened PR), you can just use the original scheme (go to point 1)
+* otherwise checkout new branch from "dev" ("git checkout dev" + "git pull origin dev" + "git checkout -b dev_2")
+* pull all changes from related branch that is not still merged to dev ("git pull origin dev_1")
+* continue working in new branch - "dev_2"
+* switch to PR of "dev_1" branch if needed, but dont forget to commit your current changes in "dev_2" branch before checkout
+* after resolving discussions in PR, you can switch back to "dev_2" branch. Don't forget to pull all changes from "dev_1" branch to "dev_2" ("git checkout dev_2" + "git pull origin dev_1")
+* if PR review finished successfully, and the "dev_1" branch was merged to "dev", you can just pull again all changes from "dev" branch to your current one ("git pull origin dev"). Now all your branches are synchronized with "dev"
+* finish to work with updated "dev_2" branch, then open new PR to "dev" branch
+* wait for feedback from Linkdrop team
+
 ## License
 
 GPL-3.0.
